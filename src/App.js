@@ -11,6 +11,7 @@ import { wordsList } from './data/wordsList'
 import StartScreen from './components/StartScreen';
 import Game from './components/Game';
 import GameOver from './components/GameOver';
+import Footer from './components/Footer';
 
 
 const stages = [
@@ -34,6 +35,8 @@ function App() {
   const [guesses, setGuesses] = useState(3)
   const [score, setScore] = useState(0)
 
+  
+
   const pickWordAndCategory = useCallback(() => {
     //pick a random category
     const categories = Object.keys(words)
@@ -44,6 +47,11 @@ function App() {
 
     return { word, category }
   }, [words])
+
+  const clearLetterStates = () => {
+    setGuessedLetters([])
+    setWrongLetters([])
+  }
 
   //start the secret word game
   const startGame = useCallback(() => {
@@ -100,10 +108,6 @@ function App() {
   }
 
 
-  const clearLetterStates = () => {
-    setGuessedLetters([])
-    setWrongLetters([])
-  }
 
   useEffect(() => {
     if (guesses === 0) {
@@ -125,6 +129,7 @@ function App() {
 
       setScore((actualScore) => actualScore += 100)
 
+      setGuesses(3)
       startGame()
     }
 
@@ -154,6 +159,7 @@ function App() {
         />
       )}
       {gameStage === 'end' && <GameOver retry={retry} score={score} />}
+      <Footer />
     </div>
   );
 }

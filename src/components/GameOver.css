@@ -4,6 +4,8 @@
     justify-content: center;
     align-items: center;
     margin: 6rem auto;
+    height: calc(100vh - 50px);
+    width: 100%;
 }
 h2 span {
     color: #ecfa00;

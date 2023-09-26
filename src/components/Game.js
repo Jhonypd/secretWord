@@ -25,7 +25,6 @@ const Game = ({
         letterInputRef.current.focus()
     }
     return (
-        <div>
             <div className="game">
                 <p className="points">
                     <span>Pontuação: {score}</span>
@@ -70,7 +69,6 @@ const Game = ({
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
